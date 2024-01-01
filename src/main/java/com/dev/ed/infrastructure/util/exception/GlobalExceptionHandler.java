@@ -1,4 +1,4 @@
-package com.dev.ed.util.exception;
+package com.dev.ed.infrastructure.util.exception;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;

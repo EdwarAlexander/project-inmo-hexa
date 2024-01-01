@@ -1,4 +1,4 @@
-package com.dev.ed.util.mapper;
+package com.dev.ed.infrastructure.util.mapper;
 
 import com.dev.ed.domain.model.request.ClienteRequestModel;
 import com.dev.ed.domain.model.response.ClienteResponseModel;

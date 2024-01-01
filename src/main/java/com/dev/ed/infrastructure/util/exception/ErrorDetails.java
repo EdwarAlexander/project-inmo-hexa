@@ -1,4 +1,4 @@
-package com.dev.ed.util.exception;
+package com.dev.ed.infrastructure.util.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

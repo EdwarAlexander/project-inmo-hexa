@@ -5,7 +5,7 @@ import com.dev.ed.domain.model.response.ClienteResponseModel;
 import com.dev.ed.domain.ports.out.ClienteOut;
 import com.dev.ed.infrastructure.entity.ClienteEntity;
 import com.dev.ed.infrastructure.repository.ClienteRepository;
-import com.dev.ed.util.mapper.ClienteMapper;
+import com.dev.ed.infrastructure.util.mapper.ClienteMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
