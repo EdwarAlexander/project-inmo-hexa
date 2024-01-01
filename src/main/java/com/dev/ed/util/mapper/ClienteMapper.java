@@ -1,6 +1,7 @@
 package com.dev.ed.util.mapper;
 
-import com.dev.ed.domain.model.ClienteModel;
+import com.dev.ed.domain.model.request.ClienteRequestModel;
+import com.dev.ed.domain.model.response.ClienteResponseModel;
 import com.dev.ed.infrastructure.entity.ClienteEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -10,7 +11,7 @@ public interface ClienteMapper {
 
     ClienteMapper MAPPER = Mappers.getMapper(ClienteMapper.class);
 
-    ClienteEntity mapToClienteEntity(ClienteModel clienteModel);
+    ClienteEntity mapToClienteEntity(ClienteRequestModel clienteRequestModel);
 
-    ClienteModel mapToClienteModel(ClienteEntity clienteEntity);
+    ClienteResponseModel mapToClienteResponseModel(ClienteEntity clienteEntity);
 }

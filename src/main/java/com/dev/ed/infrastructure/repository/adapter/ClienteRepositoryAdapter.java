@@ -1,6 +1,7 @@
 package com.dev.ed.infrastructure.repository.adapter;
 
-import com.dev.ed.domain.model.ClienteModel;
+import com.dev.ed.domain.model.request.ClienteRequestModel;
+import com.dev.ed.domain.model.response.ClienteResponseModel;
 import com.dev.ed.domain.ports.out.ClienteOut;
 import com.dev.ed.infrastructure.entity.ClienteEntity;
 import com.dev.ed.infrastructure.repository.ClienteRepository;
@@ -16,21 +17,19 @@ public class ClienteRepositoryAdapter implements ClienteOut {
 
     private final ClienteRepository clienteRepository;
 
-    //private ClienteMapper clienteMapper;
-
     @Override
-    public ClienteModel create(ClienteModel request) {
+    public ClienteResponseModel create(ClienteRequestModel request) {
         ClienteEntity clienteEntity = ClienteMapper.MAPPER.mapToClienteEntity(request);
-        return ClienteMapper.MAPPER.mapToClienteModel(clienteRepository.save(clienteEntity));
+        return ClienteMapper.MAPPER.mapToClienteResponseModel(clienteRepository.save(clienteEntity));
     }
 
     @Override
-    public Optional<ClienteModel> update(Long code, ClienteModel request) {
+    public Optional<ClienteResponseModel> update(Long code, ClienteRequestModel request) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<ClienteModel> get(Long code) {
+    public Optional<ClienteResponseModel> get(Long code) {
         return Optional.empty();
     }
 }

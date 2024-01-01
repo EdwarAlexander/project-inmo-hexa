@@ -1,7 +1,8 @@
 package com.dev.ed.infrastructure.controller;
 
 import com.dev.ed.application.service.ClienteService;
-import com.dev.ed.domain.model.ClienteModel;
+import com.dev.ed.domain.model.request.ClienteRequestModel;
+import com.dev.ed.domain.model.response.ClienteResponseModel;
 import com.dev.ed.infrastructure.controller.apidoc.IClienteController;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,8 +16,8 @@ public class ClienteController implements IClienteController {
     private final ClienteService clienteService;
 
     @Override
-    public ResponseEntity<ClienteModel> create(ClienteModel clienteModelRequest) {
-        ClienteModel clienteModel = clienteService.create(clienteModelRequest);
-        return new ResponseEntity<>(clienteModel, HttpStatus.CREATED);
+    public ResponseEntity<ClienteResponseModel> create(ClienteRequestModel clienteRequestModel) {
+        ClienteResponseModel clienteResponseModel = clienteService.create(clienteRequestModel);
+        return new ResponseEntity<>(clienteResponseModel, HttpStatus.CREATED);
     }
 }
