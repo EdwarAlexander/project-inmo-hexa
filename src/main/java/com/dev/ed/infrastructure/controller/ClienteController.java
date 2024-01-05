@@ -20,4 +20,14 @@ public class ClienteController implements IClienteController {
         ClienteResponseModel clienteResponseModel = clienteService.create(clienteRequestModel);
         return new ResponseEntity<>(clienteResponseModel, HttpStatus.CREATED);
     }
+
+    @Override
+    public ResponseEntity<ClienteResponseModel> update(Long clienteId, ClienteRequestModel clienteRequestModel) {
+        return clienteService.update(clienteId, clienteRequestModel).map( cliente -> new ResponseEntity<>(cliente, HttpStatus.OK)).orElse( new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @Override
+    public ResponseEntity<ClienteResponseModel> get(Long clienteId) {
+        return clienteService.get(clienteId).map(cliente-> new ResponseEntity<>(cliente,HttpStatus.OK)).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 }

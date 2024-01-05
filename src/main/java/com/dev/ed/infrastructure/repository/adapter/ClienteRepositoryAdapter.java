@@ -5,6 +5,8 @@ import com.dev.ed.domain.model.response.ClienteResponseModel;
 import com.dev.ed.domain.ports.out.ClienteOut;
 import com.dev.ed.infrastructure.entity.ClienteEntity;
 import com.dev.ed.infrastructure.repository.ClienteRepository;
+import com.dev.ed.infrastructure.util.constants.TablesName;
+import com.dev.ed.infrastructure.util.exception.IdNotFoundException;
 import com.dev.ed.infrastructure.util.mapper.ClienteMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -25,11 +27,17 @@ public class ClienteRepositoryAdapter implements ClienteOut {
 
     @Override
     public Optional<ClienteResponseModel> update(Long code, ClienteRequestModel request) {
-        return Optional.empty();
+        if(!clienteRepository.existsById(code)){
+            throw new IdNotFoundException(TablesName.cliente.name());
+        }
+        ClienteEntity clienteEntity = ClienteMapper.MAPPER.mapToClienteEntity(request);
+        clienteEntity.setId(code);
+        ClienteResponseModel clienteResponseModel = ClienteMapper.MAPPER.mapToClienteResponseModel(clienteRepository.save(clienteEntity));
+        return Optional.of(clienteResponseModel);
     }
 
     @Override
     public Optional<ClienteResponseModel> get(Long code) {
-        return Optional.empty();
+        return clienteRepository.findById(code).map(cliente->ClienteMapper.MAPPER.mapToClienteResponseModel(cliente));
     }
 }
