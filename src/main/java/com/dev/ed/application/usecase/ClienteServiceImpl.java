@@ -6,6 +6,7 @@ import com.dev.ed.domain.ports.in.ClienteIn;
 import com.dev.ed.domain.ports.out.ClienteOut;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -26,5 +27,10 @@ public class ClienteServiceImpl implements ClienteIn {
     @Override
     public Optional<ClienteResponseModel> get(Long code) {
         return clienteOut.get(code);
+    }
+
+    @Override
+    public List<ClienteResponseModel> getAll() {
+        return clienteOut.getAll();
     }
 }

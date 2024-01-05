@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 public class ClienteController implements IClienteController {
@@ -29,5 +31,10 @@ public class ClienteController implements IClienteController {
     @Override
     public ResponseEntity<ClienteResponseModel> get(Long clienteId) {
         return clienteService.get(clienteId).map(cliente-> new ResponseEntity<>(cliente,HttpStatus.OK)).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @Override
+    public ResponseEntity<List<ClienteResponseModel>> getAll() {
+        return new ResponseEntity<>(clienteService.getAll(), HttpStatus.OK);
     }
 }

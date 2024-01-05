@@ -6,6 +6,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/clientes")
 public interface IClienteController {
@@ -18,4 +20,7 @@ public interface IClienteController {
 
     @GetMapping("/{cliente_id}")
     public ResponseEntity<ClienteResponseModel> get(@PathVariable("cliente_id") Long clienteId);
+
+    @GetMapping
+    public ResponseEntity<List<ClienteResponseModel>> getAll();
 }

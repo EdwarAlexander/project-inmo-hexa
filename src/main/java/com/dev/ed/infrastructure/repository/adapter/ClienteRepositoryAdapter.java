@@ -11,6 +11,7 @@ import com.dev.ed.infrastructure.util.mapper.ClienteMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -39,5 +40,11 @@ public class ClienteRepositoryAdapter implements ClienteOut {
     @Override
     public Optional<ClienteResponseModel> get(Long code) {
         return clienteRepository.findById(code).map(cliente->ClienteMapper.MAPPER.mapToClienteResponseModel(cliente));
+    }
+
+    @Override
+    public List<ClienteResponseModel> getAll() {
+        List<ClienteEntity> clienteEntityList = clienteRepository.findAll();
+        return ClienteMapper.MAPPER.mapToListClienteResponseModel(clienteEntityList);
     }
 }

@@ -6,6 +6,8 @@ import com.dev.ed.infrastructure.entity.ClienteEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface ClienteMapper {
 
@@ -14,4 +16,6 @@ public interface ClienteMapper {
     ClienteEntity mapToClienteEntity(ClienteRequestModel clienteRequestModel);
 
     ClienteResponseModel mapToClienteResponseModel(ClienteEntity clienteEntity);
+
+    List<ClienteResponseModel> mapToListClienteResponseModel(List<ClienteEntity> clienteEntityList);
 }
